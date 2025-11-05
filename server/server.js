@@ -23,9 +23,10 @@ app.use(cookieParser());
 
 // ✅ CORS configuration for frontend with credentials
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  origin: ["http://localhost:5173", "https://besttodoonworld.netlify.app"],
   credentials: true,
 }));
+
 
 // Routes
 app.use("/api/auth", authRoutes);
