@@ -1,0 +1,27 @@
+{
+    "home": "Home",
+    "tasks": "Tasks",
+    "addTask": "Add Task",
+    "changeLanguage": "Change Language",
+    "completedTasks": "Completed Tasks",
+    "myTasks": "My Tasks",
+    "complete": "Complete",
+    "Completed": "Completed",
+    "Are you sure": "Are you sure you want to mark this task as completed?",
+    "Task marked": "Task marked as completed!",
+    "Add New Task":"Add New Task",
+    "Title":"Title",
+    "Description":"Description",
+    "Due Date & Time":"Date & Time",
+    "Priority":"Priority",
+    "Low":"Low",
+    "Medium":"Medium",
+    "High":"High",
+    "Add Task":"Add Task",
+    "No tasks available":"No tasks available. Please add a task.",
+    "Enter task title":"Enter task title",
+    "Enter task description":"Enter task description",
+    "Task added!":"Task added successfully!",
+    "Completed Tasks":"Completed Tasks"
+
+}
