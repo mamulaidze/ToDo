@@ -22,7 +22,7 @@ export default function Tasks() {
   // Fetch tasks & clean overdue
   const fetchTasks = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/tasks");
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`);
       if (!res.ok) throw new Error("Failed to fetch tasks");
       let data = await res.json();
 
@@ -32,7 +32,7 @@ export default function Tasks() {
       // Delete overdue tasks
       const overdueTasks = data.filter(task => new Date(task.datetime) < now);
       for (let task of overdueTasks) {
-        await fetch(`http://localhost:5000/api/tasks/${task._id}`, { method: "DELETE" });
+        await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`, { method: "DELETE" });
       }
 
       setTasks(data.filter(task => new Date(task.datetime) >= now));
@@ -49,7 +49,7 @@ export default function Tasks() {
   const handleComplete = async (taskId) => {
     if (!window.confirm(t("Are you sure"))) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/${taskId}/complete`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}/complete`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
       });
@@ -65,7 +65,7 @@ export default function Tasks() {
   const handleDelete = async (taskId) => {
     if (!window.confirm(t("Are you sure you want to delete this task?"))) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/${taskId}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete task");
       setTasks(prev => prev.filter(t => t._id !== taskId));
       alert(t("Task deleted"));

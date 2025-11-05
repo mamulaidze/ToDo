@@ -21,7 +21,8 @@ export default function AddTask() {
     const newTask = { title, description, datetime, priority, repeat };
 
     try {
-      const res = await fetch("http://localhost:5000/api/tasks", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`,
+ {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTask),

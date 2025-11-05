@@ -26,7 +26,7 @@ export default function Home() {
     if (!user) return;
     const fetchTasks = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/tasks");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`)
         const data = await res.json();
         setTasks(data);
       } catch (err) {

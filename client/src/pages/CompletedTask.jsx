@@ -9,7 +9,8 @@ export default function CompletedTasks() {
   // Fetch completed tasks
   const fetchCompletedTasks = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/tasks");
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`)
+
       if (!res.ok) throw new Error("Failed to fetch tasks");
       const data = await res.json();
       setCompletedTasks(data.filter(task => task.completed));
@@ -27,7 +28,7 @@ export default function CompletedTasks() {
     if (!window.confirm(t("Are you sure you want to delete this task?"))) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/${taskId}`, { method: "DELETE" });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete task");
       setCompletedTasks(prev => prev.filter(t => t._id !== taskId));
       alert(t("Task deleted"));
